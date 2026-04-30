@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Nikola Cehic logo</title>
+  <desc id="desc">A compact NC monogram drawn as a signal route inside an engineered frame.</desc>
+  <style>
+    .bg { fill: #0d1118; fill: oklch(0.075 0.004 250); }
+    .panel { fill: #141a22; fill: oklch(0.12 0.006 250); }
+    .line { stroke: #edf0ec; stroke: oklch(0.94 0.004 80); }
+    .accent { stroke: #8ab9cf; stroke: oklch(0.78 0.035 220); }
+    .muted { stroke: #59616c; stroke: oklch(0.42 0.006 250); }
+    .node { fill: #8ab9cf; fill: oklch(0.78 0.035 220); }
+  </style>
+  <rect class="bg" x="6" y="6" width="116" height="116" rx="8" />
+  <path class="muted" d="M22 32H12V12h20M96 12h20v20M116 96v20H96M32 116H12V96" fill="none" stroke-width="4" stroke-linecap="square" />
+  <path class="panel" d="M24 24h80v80H24z" />
+  <path class="accent" d="M34 90V38l48 52V38" fill="none" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" />
+  <path class="line" d="M92 42c-7-6-15-9-25-8-10 1-18 5-24 12" fill="none" stroke-width="7" stroke-linecap="square" />
+  <path class="line" d="M43 82c6 8 15 12 27 12 9 0 17-3 23-8" fill="none" stroke-width="7" stroke-linecap="square" />
+  <path class="muted" d="M31 64h66" fill="none" stroke-width="2" stroke-dasharray="8 8" />
+  <circle class="node" cx="34" cy="90" r="5" />
+  <circle class="node" cx="82" cy="38" r="5" />
+</svg>

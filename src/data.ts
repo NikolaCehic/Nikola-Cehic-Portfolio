@@ -7,27 +7,30 @@ export const DATA: CVData = {
   email: 'nikola95cehic@gmail.com',
   phone: '+381 60 1325 266',
   linkedinUrl: 'https://www.linkedin.com/in/nikola-cehic-60a50914a/',
-  github: 'github.com/nikolacehic',
+  github: 'https://github.com/NikolaCehic',
   years: 7,
   summary: [
-    'Senior Fullstack Engineer with 7+ years building production software across Web3, fintech, and enterprise platforms.',
-    'Deep specialization in blockchain infrastructure — Cosmos SDK modules, Go-based indexers, block explorers, DAO frameworks.',
-    'Full-stack: TypeScript, React, Next.js, Node.js, Go, PostgreSQL. 0→1 product track record, frontend architecture lead, remote-first async operator.',
+    'Senior Fullstack Engineer with 7+ years building production software across Web3, applied AI, fintech, and enterprise platforms.',
+    'Deep specialization in blockchain infrastructure, Cosmos SDK modules, Go-based indexers, block explorers, DAO frameworks, and data-heavy product surfaces.',
+    'Applied AI work spans analysis-agent harnesses, LLM-grounded coaching, content generation pipelines, structured outputs, evals, and traceable reasoning artifacts.',
+    'Full-stack: Go, TypeScript, Rust, JavaScript, React, Next.js, TanStack Start, Node.js, PostgreSQL, and Prisma. 0 to 1 product track record, frontend architecture lead, remote-first async operator.',
   ],
   skills: {
-    languages: ['TypeScript', 'JavaScript', 'Go'],
-    frontend: ['React', 'Next.js', 'Angular', 'RxJS', 'NgRx', 'Redux', 'Apollo Client'],
-    backend: ['Node.js', 'NestJS', 'GraphQL', 'REST', 'Prisma', 'Apache Pulsar'],
-    blockchain: [
-      'Cosmos SDK',
-      'CosmWasm',
-      'Terra',
-      'SEDA',
-      'Go indexers',
-      'KV-store publishers',
-      'Wallet signing',
+    languages: ['Go', 'TypeScript', 'Rust', 'JavaScript'],
+    ai: [
+      'OpenAI-compatible LLMs',
+      'Anthropic Claude',
+      'Gemini',
+      'Agent workflows',
+      'Structured outputs',
+      'RAG patterns',
+      'Evals',
+      'Trace logs',
     ],
-    data: ['PostgreSQL', 'KV stores', 'WebSockets', 'Event streaming', 'Pub/Sub'],
+    frontend: ['Next.js', 'TanStack Start', 'React', 'Angular', 'RxJS', 'NgRx', 'Redux', 'Apollo Client'],
+    backend: ['Node.js', 'NestJS', 'GraphQL', 'REST', 'Apache Pulsar'],
+    blockchain: ['Cosmos SDK', 'CosmWasm', 'CosmJS', 'Web3.js', 'Ethers.js', 'EVM'],
+    data: ['PostgreSQL', 'Prisma', 'KV stores', 'WebSockets', 'Event streaming', 'Pub/Sub'],
     tooling: ['NX Monorepo', 'Jest', 'Playwright', 'Design Systems', 'Storybook', 'CI/CD'],
   },
   experience: [
@@ -37,11 +40,11 @@ export const DATA: CVData = {
       role: 'Senior Fullstack Engineer',
       start: 'Apr 2024',
       end: 'Present',
-      period: '2024 — now',
+      period: '2024 to now',
       mode: 'Remote',
       stack: ['Go', 'React', 'PostgreSQL', 'Cosmos SDK', 'TypeScript', 'Prisma', 'Playwright'],
       summary:
-        "Owning block-explorer infra, Cosmos SDK group module platform, and the company's design system monorepo — end-to-end from Go indexers to React surfaces.",
+        'Owning block-explorer infra, SEDA Treasury governance workflows, and chain-data indexing, end-to-end from Go publishers to React surfaces and public APIs.',
       highlights: [
         {
           title: 'SEDA Explorer',
@@ -49,14 +52,9 @@ export const DATA: CVData = {
             "Built the network's block explorer from the ground up as the primary engineer. Owned the full stack: Go-based chain indexers, PostgreSQL modeling, React frontend, public-facing API. Designed ingestion for blocks, txs, validators, events; shipped search, filtering, and real-time updates used across the SEDA ecosystem.",
         },
         {
-          title: 'Cosmos SDK Group Module Platform',
+          title: 'SEDA Treasury',
           body:
-            'Delivered a production app on the Cosmos SDK group module enabling on-chain treasury management, security-group administration, and multisig governance. Proposal lifecycle, threshold-based policy config, member management — integrated with chain-level primitives and wallet signing.',
-        },
-        {
-          title: 'Design System Monorepo',
-          body:
-            "Architected and shipped the company's standalone design system — versioned monorepo with React components, design tokens, theming primitives consumed across multiple production apps. Defined API conventions, a11y baseline, and release workflow.",
+            'Delivered the Gov multisig app on the Cosmos SDK group module for on-chain treasury management, security-group administration, and governance execution. Proposal lifecycle, threshold policy configuration, member management, chain primitives, and wallet signing all shipped as one production surface.',
         },
         {
           title: 'Backend & API',
@@ -66,7 +64,7 @@ export const DATA: CVData = {
         {
           title: 'Indexer Development',
           body:
-            "Built KV-store publishers in Go for multiple Cosmos SDK modules — the end-to-end indexing pipeline that powers the web app's database layer. Event parsers, state-change listeners, publisher logic mapping raw chain data to queryable app state.",
+            "Built KV-store publishers in Go for multiple Cosmos SDK modules: the end-to-end indexing pipeline that powers the web app's database layer. Event parsers, state-change listeners, publisher logic mapping raw chain data to queryable app state.",
         },
       ],
     },
@@ -76,11 +74,11 @@ export const DATA: CVData = {
       role: 'Senior Fullstack Engineer',
       start: 'Dec 2022',
       end: 'Apr 2024',
-      period: '2022 — 2024',
+      period: '2022 to 2024',
       mode: 'Remote',
       stack: ['TypeScript', 'React', 'Next.js', 'CosmWasm', 'Apache Pulsar', 'Node.js'],
       summary:
-        'Led frontend on Enterprise — a Terra-based DAO framework. Shipped v1 and rebuilt v2, built Enterprise Hub from scratch, extended middleware with Pulsar streaming.',
+        'Led frontend on Enterprise, a Terra-based DAO framework. Shipped Enterprise DAO, rebuilt v2, built Enterprise Hub from scratch, and extended the indexing layer with Pulsar streaming.',
       highlights: [
         {
           title: 'Enterprise DAO',
@@ -95,12 +93,12 @@ export const DATA: CVData = {
         {
           title: 'Enterprise Hub',
           body:
-            'Built client-side infrastructure for Enterprise Hub from inception — foundational architecture, component hierarchy, routing, state management. Worked side-by-side with design to define visual language, interaction patterns, and the component library.',
+            'Built client-side infrastructure for Enterprise Hub from inception: foundational architecture, component hierarchy, routing, state management. Worked side-by-side with design to define visual language, interaction patterns, and the component library.',
         },
         {
-          title: 'Enterprise Proxy',
+          title: 'Enterprise Indexer',
           body:
-            'Extended the middleware service by integrating Apache Pulsar as the event-streaming backbone — real-time pub/sub for token, NFT, and wallet analytics. Designed event schemas, producer/consumer flows, and downstream handlers powering analytics dashboards and activity feeds.',
+            'Extended the Enterprise indexing and middleware service by integrating Apache Pulsar as the event-streaming backbone for token, NFT, wallet, and DAO analytics. Designed event schemas, producer and consumer flows, and downstream handlers powering analytics dashboards and activity feeds.',
         },
         {
           title: 'Production Reliability & Customer Success',
@@ -119,12 +117,12 @@ export const DATA: CVData = {
       mode: 'Belgrade',
       stack: ['Angular', 'RxJS', 'NgRx', 'NestJS', 'GraphQL', 'Apollo', 'NX'],
       summary:
-        'JobCloud platform delivery — complex data-heavy Angular features, middleware refactor, design-system contribution, NX monorepo migration.',
+        'JobCloud platform delivery: complex data-heavy Angular features, middleware refactor, design-system contribution, NX monorepo migration.',
       highlights: [
         {
           title: 'JobCloud Platform',
           body:
-            "Delivered user-facing features for one of Switzerland's largest recruitment platforms. Complex data-heavy views in Angular + RxJS + NgRx, reactive state management, selector composition, side-effect handling — predictable and testable across feature modules.",
+            "Delivered user-facing features for one of Switzerland's largest recruitment platforms. Complex data-heavy views in Angular + RxJS + NgRx, reactive state management, selector composition, side-effect handling; predictable and testable across feature modules.",
         },
         {
           title: 'Middleware Refactoring',
@@ -139,7 +137,7 @@ export const DATA: CVData = {
         {
           title: 'Reusable Library Architecture',
           body:
-            'Authored Angular libraries; migrated feature code from monolithic modules into an NX monorepo. Defined library boundaries, dep rules, build targets — enabled independent versioning and affected-graph builds.',
+            'Authored Angular libraries; migrated feature code from monolithic modules into an NX monorepo. Defined library boundaries, dep rules, build targets; enabled independent versioning and affected-graph builds.',
         },
         {
           title: 'Testing & QA',
@@ -154,7 +152,7 @@ export const DATA: CVData = {
       role: 'Frontend Engineer',
       start: 'Dec 2020',
       end: 'May 2022',
-      period: '2020 — 2022',
+      period: '2020 to 2022',
       mode: 'Belgrade',
       stack: ['Angular', 'React', 'TypeScript', 'RxJS', 'NgRx'],
       summary:
@@ -163,7 +161,7 @@ export const DATA: CVData = {
         {
           title: 'Administration Platform UI',
           body:
-            "Central role building core UI for Daon's enterprise Administration Platform — used by identity/biometric customers to manage users, policies, workflows. Complex, data-dense interfaces in Angular with RxJS + NgRx; contributed to architectural decisions around module boundaries and composition.",
+            "Central role building core UI for Daon's enterprise Administration Platform, used by identity/biometric customers to manage users, policies, workflows. Complex, data-dense interfaces in Angular with RxJS + NgRx; contributed to architectural decisions around module boundaries and composition.",
         },
         {
           title: 'Internal Process Optimization Tools',
@@ -178,12 +176,12 @@ export const DATA: CVData = {
         {
           title: 'Frontend Team Leadership',
           body:
-            'Owned task breakdown, allocation, and delivery coordination. Led technical discussions, reviewed PRs, onboarded new engineers — while shipping production features as an IC.',
+            'Owned task breakdown, allocation, and delivery coordination. Led technical discussions, reviewed PRs, onboarded new engineers while shipping production features as an IC.',
         },
         {
           title: 'Cross-platform & Native Integration',
           body:
-            'Coordinated with iOS/Android engineers to define the contract between web views and host apps — navigation handoffs, data passing, lifecycle events, error handling for seamless hybrid experiences.',
+            'Coordinated with iOS/Android engineers to define the contract between web views and host apps: navigation handoffs, data passing, lifecycle events, error handling for seamless hybrid experiences.',
         },
       ],
     },
@@ -193,7 +191,7 @@ export const DATA: CVData = {
       role: 'Frontend Engineer',
       start: 'Feb 2019',
       end: 'Dec 2020',
-      period: '2019 — 2020',
+      period: '2019 to 2020',
       mode: 'Belgrade',
       stack: ['AngularJS', 'Angular', 'Vue.js', 'WebSockets'],
       summary:
@@ -202,27 +200,69 @@ export const DATA: CVData = {
         {
           title: 'Web Betting Platforms',
           body:
-            'Designed and delivered two production web betting platforms serving live sports betting users — robust, high-performance UIs in AngularJS + Angular. Real-time odds updates, bet-slip management, market selection, live event tracking. Contributed to migration from legacy AngularJS to modern Angular.',
-        },
-        {
-          title: 'Back Office Application',
-          body:
-            'Comprehensive back-office in Angular for ops and trading to manage offerings, configure markets, monitor active bets, and handle real-time data. Data-heavy admin views, bulk editing, real-time dashboards where stale data was not acceptable.',
+            'Designed and delivered two production web betting platforms serving live sports betting users with robust, high-performance UIs in AngularJS + Angular. Real-time odds updates, bet-slip management, market selection, live event tracking. Contributed to migration from legacy AngularJS to modern Angular.',
         },
         {
           title: 'Service & Crawler Health Check',
           body:
-            'Built a dedicated service + crawler monitoring tool in Vue.js — real-time visibility into crawlers, backend services, scheduled jobs. Status indicators, uptime tracking, alerting cues that reduced MTTR for service degradations.',
+            'Built a dedicated service + crawler monitoring tool in Vue.js with real-time visibility into crawlers, backend services, scheduled jobs. Status indicators, uptime tracking, alerting cues that reduced MTTR for service degradations.',
         },
         {
           title: 'Real-time Data Handling',
           body:
-            'Worked extensively with live data pipelines — WebSockets, polling, reactive state patterns — keeping UIs continuously in sync with rapidly changing backend state.',
+            'Worked extensively with live data pipelines: WebSockets, polling, reactive state patterns, keeping UIs continuously in sync with rapidly changing backend state.',
         },
       ],
     },
   ],
   projects: [
+    {
+      id: 'cruxharness',
+      name: 'Crux Harness',
+      tagline: 'Decision-grade analysis agents with auditable reasoning artifacts.',
+      status: 'Active',
+      year: '2026',
+      role: 'Solo build · TypeScript CLI + evaluation harness',
+      summary:
+        'Spec-driven local harness for hard strategy questions. Crux turns a question into a replayable run folder containing question specs, claim graphs, evidence maps, contradictions, red-team analysis, uncertainty, decision memos, eval reports, and execution traces.',
+      problem:
+        'Fluent AI reports hide the assumptions that matter. Crux forces analysis agents to expose claims, cite source chunks, model uncertainty, run red-team checks, and fail benchmarks when reasoning artifacts drift or regress.',
+      stack: [
+        'TypeScript',
+        'Node.js',
+        'AJV',
+        'JSON Schema',
+        'YAML',
+        'CLI tooling',
+        'OpenAI-compatible LLMs',
+        'Node test runner',
+      ],
+      highlights: [
+        {
+          title: 'Artifact contract',
+          body:
+            'Every run writes a complete artifact set: input, run config, question spec, source inventory, chunks, claims, evidence, contradictions, red-team memo, uncertainty model, decision memo, eval report, and trace log.',
+        },
+        {
+          title: 'Schema and provenance boundary',
+          body:
+            'Strict JSON schemas validate each artifact. Integrity checks reject evidence excerpts that do not appear in cited source chunks, keeping optional LLM output behind the same validation boundary as deterministic runs.',
+        },
+        {
+          title: 'Benchmark suite',
+          body:
+            'Seven scenario packs cover strategic technology, investment diligence, policy analysis, product strategy, scientific thesis evaluation, market entry, and root-cause analysis with invariants and regression thresholds.',
+        },
+        {
+          title: 'Replayable CLI workflow',
+          body:
+            'Run, eval, replay, inspect, and benchmark commands produce reproducible local runs. The run config locks harness version, input hash, source policy, budgets, mapper selection, and prompt versions.',
+        },
+      ],
+      links: [
+        { label: 'source', href: 'https://github.com/NikolaCehic/crux-harness' },
+      ],
+    },
     {
       id: 'clipinsight',
       name: 'ClipInsight AI',
@@ -231,9 +271,9 @@ export const DATA: CVData = {
       year: '2025',
       role: 'Solo build · design + full stack',
       summary:
-        'AI-powered content platform that ingests a video and outputs publish-ready Twitter threads, LinkedIn posts, newsletters, and SEO blog articles — collapsing a 3–4 hour repurposing workflow into a single upload.',
+        'AI-powered content platform that ingests a video and outputs publish-ready Twitter threads, LinkedIn posts, newsletters, and SEO blog articles, collapsing a 3-4 hour repurposing workflow into a single upload.',
       problem:
-        'Creators burn hours repackaging the same idea for every channel. ClipInsight transcribes, analyzes, and rewrites in each platform\'s native voice — live previews, analytics, one-click publishing on Pro.',
+        'Creators burn hours repackaging the same idea for every channel. ClipInsight transcribes, analyzes, and rewrites in each platform\'s native voice with live previews, analytics, and one-click publishing on Pro.',
       stack: [
         'Next.js 15',
         'TypeScript',
@@ -248,7 +288,7 @@ export const DATA: CVData = {
         {
           title: 'Video → structured insights',
           body:
-            'Gemini 2.0 Flash pipeline handles transcription, key-moment detection, and topic extraction — normalized into a shared content model the generators read from.',
+            'Gemini 2.0 Flash pipeline handles transcription, key-moment detection, and topic extraction, normalized into a shared content model the generators read from.',
         },
         {
           title: 'Platform-native generators',
@@ -268,7 +308,7 @@ export const DATA: CVData = {
         {
           title: 'Demo-mode onboarding',
           body:
-            'Any email unlocks a demo session — no OAuth setup needed to evaluate the full workflow. Removes the friction of "hello world" for a video-heavy product.',
+            'Any email unlocks a demo session; no OAuth setup needed to evaluate the full workflow. Removes the friction of "hello world" for a video-heavy product.',
         },
       ],
       links: [
@@ -283,9 +323,9 @@ export const DATA: CVData = {
       year: '2026',
       role: 'Solo build · design + full stack',
       summary:
-        'Multi-exchange trading journal that ingests fills from Binance, Bybit, OKX, and Hyperliquid, derives positions, and runs 12 behavioral detectors plus user-authored ones over the full history — surfacing the patterns traders miss in their own P&L.',
+        'Multi-exchange trading journal that ingests fills from Binance, Bybit, OKX, and Hyperliquid, derives positions, and runs 12 behavioral detectors plus user-authored ones over the full history, surfacing the patterns traders miss in their own P&L.',
       problem:
-        'Traders bleed money to repeating behaviors — revenge trades, oversized entries, cutting winners, riding losers — that no broker UI ever names. Trade Journal merges fills into positions deterministically, flags the patterns, and lets Claude narrate per-trade coaching and a weekly digest grounded against the actual data.',
+        'Traders bleed money to repeating behaviors: revenge trades, oversized entries, cutting winners, riding losers, that no broker UI ever names. Trade Journal merges fills into positions deterministically, flags the patterns, and lets Claude narrate per-trade coaching and a weekly digest grounded against the actual data.',
       stack: [
         'TanStack Start',
         'React 19',
@@ -307,7 +347,7 @@ export const DATA: CVData = {
         {
           title: '12 built-in pattern detectors',
           body:
-            'Revenge trading, oversized positions, sizing instability, cut-winners/ride-losers, overtrading after losses, fee drag, leverage creep, plan adherence, and more — every finding links back to the trades that triggered it.',
+            'Revenge trading, oversized positions, sizing instability, cut-winners/ride-losers, overtrading after losses, fee drag, leverage creep, plan adherence, and more; every finding links back to the trades that triggered it.',
         },
         {
           title: 'Custom detector composer',
@@ -317,7 +357,7 @@ export const DATA: CVData = {
         {
           title: 'AI Coach + Weekly Digest',
           body:
-            'Claude Sonnet 4.6 produces per-trade narrative + A–F grade above the fold, cached by (positionId, derivationVersion) so each trade costs one LLM call. Sunday 22:00 digest delivers wins, losses, top finding, and one rule to adopt — grounded against position data with deterministic fallbacks.',
+            'Claude Sonnet 4.6 produces per-trade narrative + A-F grade above the fold, cached by (positionId, derivationVersion) so each trade costs one LLM call. Sunday 22:00 digest delivers wins, losses, top finding, and one rule to adopt, grounded against position data with deterministic fallbacks.',
         },
         {
           title: 'Plans + adherence',
@@ -327,7 +367,7 @@ export const DATA: CVData = {
         {
           title: 'Demo mode + fixtures',
           body:
-            'One-click read-only demo session — no OAuth, no DB writes — exercises every surface against seeded data. Per-exchange and detector-flavored CSV fixtures stress-test the import pipeline without a live trading account.',
+            'One-click read-only demo session; no OAuth, no DB writes. Exercises every surface against seeded data. Per-exchange and detector-flavored CSV fixtures stress-test the import pipeline without a live trading account.',
         },
       ],
       links: [

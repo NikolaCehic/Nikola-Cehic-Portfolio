@@ -1,5 +1,6 @@
 export type SkillCategory =
   | 'languages'
+  | 'ai'
   | 'frontend'
   | 'backend'
   | 'blockchain'

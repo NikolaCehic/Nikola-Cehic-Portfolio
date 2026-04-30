@@ -24,18 +24,12 @@ button {
   color: inherit;
   background: none;
   border: none;
-  cursor: none;
+  cursor: pointer;
   padding: 0;
 }
 
-@media (max-width: 720px) {
-  button {
-    cursor: pointer;
-  }
-}
-
 ::selection {
-  background: var(--accent);
+  background: var(--fg);
   color: var(--accent-ink);
 }
 

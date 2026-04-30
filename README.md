@@ -1,70 +1,43 @@
-# Portfolio — local development
+# Nikola Cehic Portfolio
 
-Pure HTML/CSS/JS. No build step, no bundler, no framework install. Just serve the folder.
+React/Vite portfolio site for Nikola Cehic, built as a chaptered brand surface for senior fullstack, crypto infrastructure, and AI-native product roles.
 
-## Requirements
-- Any static file server (because ES modules & babel inline JSX require `http://` — `file://` won't work)
-- A modern browser (Chrome, Firefox, Safari, Edge)
+## Local Development
 
-## Run it locally
-
-Pick one of these — whatever you have:
-
-### Option 1 — Node (npx, no install)
 ```bash
-cd path/to/portfolio
-npx serve .
-# or
-npx http-server . -p 3000
+npm install
+npm run dev
 ```
 
-### Option 2 — Python (comes with macOS / Linux)
+The dev server opens at the local URL printed by Vite, usually `http://127.0.0.1:3000/` or `http://localhost:5173/`.
+
+## Production
+
 ```bash
-cd path/to/portfolio
-python3 -m http.server 3000
+npm run build
+npm run preview
 ```
 
-### Option 3 — VS Code
-Install the **Live Server** extension, right-click `Portfolio.html` → *Open with Live Server*.
+## Checks
 
-### Option 4 — PHP / any other static server
 ```bash
-php -S localhost:3000
+npm test
+npm run typecheck
+npm run build
 ```
 
-Then open **http://localhost:3000/Portfolio.html**.
+## Project Structure
 
-## Project structure
-```
-Portfolio.html          # entry point — layout, styles, chrome, theme, cursor
-src/
-  animations.js         # canvas bg + scroll progress + parallax + magnetic + scramble + counters
-  data.jsx              # CV content (single source of truth)
-  hero.jsx              # terminal-CLI hero that types itself
-  experience.jsx        # index-style experience timeline
-  sections.jsx          # about / skills / contact
-  main.jsx              # React mounts + smooth-scroll
-assets/
-  Nikola-Cehic-CV.pdf
+```text
+src/App.tsx             Main portfolio surface and section composition
+src/data.ts             CV, experience, stack, and project content
+src/styles/theme.css    OKLCH tokens and typography variables
+src/styles/globals.css  Layout, components, motion, and responsive styling
+public/                 Static public assets, including the CV PDF
+PRODUCT.md             Strategic brand context for design work
+DESIGN.md              Visual system context for design work
 ```
 
-## Editing content
-All CV content lives in **`src/data.jsx`**. Edit there, save, refresh.
+## Content
 
-## Notes
-- React + Babel load from unpkg CDN. For fully offline, download `react.development.js`, `react-dom.development.js`, and `@babel/standalone/babel.min.js` into `vendor/` and rewrite the script tags in `Portfolio.html`.
-- No trackers, no analytics, no build. Deploy by copying the folder to any static host (Vercel, Netlify, Cloudflare Pages, GitHub Pages, S3).
-
-## Deploy
-```bash
-# Vercel
-npx vercel --prod
-
-# Netlify
-npx netlify deploy --prod --dir=.
-
-# GitHub Pages
-# Push to a repo, enable Pages on the main branch root
-```
-
-Entry file is `Portfolio.html` — rename to `index.html` if your host insists on it.
+Update portfolio content in `src/data.ts`. The CV download is served from `public/Nikola-Cehic-CV.pdf` and linked as `/Nikola-Cehic-CV.pdf`.
