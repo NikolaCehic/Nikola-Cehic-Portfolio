@@ -1,4 +1,4 @@
-import { useEffect, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { DATA } from './data';
 import type { Experience, Highlight, Project } from './types';
 
@@ -86,16 +86,16 @@ const aiSystems = [
     label: 'Evals',
     title: 'Treat evals as release infrastructure.',
     body:
-      'Crux uses scenario packs, invariant checks, benchmark reports, prompt versions, and regression thresholds, which is the discipline AI products need before traffic scales.',
-    tags: ['Scenario packs', 'Regression gates', 'Prompt versions', 'Failure budgets'],
+      'Crux and Archetype treat quality as release infrastructure: scenario packs, invariant checks, readiness reports, prompt versions, regression thresholds, and validation gates before traffic or downstream agents scale.',
+    tags: ['Scenario packs', 'Readiness gates', 'Prompt versions', 'Failure budgets'],
   },
   {
     num: 'AI.03',
     label: 'Grounding',
     title: 'Ground every answer in source or product state.',
     body:
-      'The repeatable pattern is evidence first: chunk provenance, source-backed claims, structured extraction, deterministic fallbacks, and UI states that expose uncertainty.',
-    tags: ['RAG patterns', 'Evidence maps', 'Structured outputs', 'Fallback logic'],
+      'The repeatable pattern is evidence first: chunk provenance in Crux, source-backed contracts in Archetype, deterministic market facts in Parallax, and UI states that expose uncertainty.',
+    tags: ['RAG patterns', 'Evidence maps', 'Structured outputs', 'Deterministic facts'],
   },
   {
     num: 'AI.04',
@@ -114,20 +114,22 @@ const aiProofPoints = [
     detail: 'Replayable analysis agents, schemas, evidence maps, red-team memos, eval reports, and trace logs.',
   },
   {
-    label: 'Grounded coaching',
-    value: 'Journal',
-    detail: 'Claude narratives sit on deterministic trade derivation, cached by version, with fallbacks when model output is not needed.',
+    label: 'Contract proof',
+    value: 'Archetype',
+    detail: 'Product briefs compile into route maps, screen states, design tokens, agent contracts, and readiness reports.',
   },
   {
-    label: 'Generation product',
-    value: 'ClipInsight',
+    label: 'Decision proof',
+    value: 'Parallax',
     detail:
-      'Video-to-content generation through transcription, structured insights, platform-native outputs, editable previews, and billing.',
+      'Trading theses become evidence snapshots, deterministic analytics, council review, decision gates, lifecycle triggers, and audit bundles.',
   },
 ];
 
 const projectEvidence: Record<string, readonly string[]> = {
+  archetype: ['Contract package', 'DSAG graph', 'Readiness gates', 'Agent handoff'],
   cruxharness: ['Agent loop', 'Eval reports', 'Trace logs', 'Schema validation'],
+  parallax: ['Evidence snapshot', 'Council review', 'Decision gates', 'Audit replay'],
   tradejournal: ['Claude coach', 'Grounded digest', 'Detector engine', 'Cost-aware cache'],
   clipinsight: ['Gemini pipeline', 'Structured insights', 'Platform generators', 'Editable previews'],
 };
@@ -767,20 +769,67 @@ function AIEngineering() {
 }
 
 function Lab() {
+  const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
+  const expandedSlotRef = useRef<HTMLDivElement | null>(null);
+  const expandedProject = DATA.projects.find((project) => project.id === expandedProjectId);
+  const closedProjects = expandedProjectId
+    ? DATA.projects.filter((project) => project.id !== expandedProjectId)
+    : DATA.projects;
+
+  useEffect(() => {
+    if (!expandedProjectId) {
+      return undefined;
+    }
+
+    const scrollTarget = expandedSlotRef.current;
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const revealExpandedProject = () => {
+      scrollTarget?.scrollIntoView?.({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start',
+      });
+      scrollTarget?.querySelector('summary')?.focus({ preventScroll: true });
+    };
+
+    if (typeof window.requestAnimationFrame === 'function') {
+      const frame = window.requestAnimationFrame(revealExpandedProject);
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    revealExpandedProject();
+    return undefined;
+  }, [expandedProjectId]);
+
   return (
-    <Chapter id="lab" num="05" label="Lab and products" title="Side projects and prototypes.">
+    <Chapter id="lab" num="05" label="Side projects" title="Side Projects">
       <p className="section-sub">
         Product builds and experiments across AI-native interfaces, analysis-agent harnesses, trading workflows, creator
         tooling, and developer ergonomics.
       </p>
       <div className="lab-index" data-reveal aria-label="Lab index">
         <span>LAB INDEX</span>
-        <strong>{DATA.projects.length} active builds plus the full GitHub archive.</strong>
+        <strong>{DATA.projects.length} featured builds plus the full GitHub archive.</strong>
         <p>Each featured project is framed by the problem, system behavior, implementation proof points, and source.</p>
       </div>
+      {expandedProject ? (
+        <div className="lab-expanded-slot" ref={expandedSlotRef}>
+          <ProjectCard
+            project={expandedProject}
+            index={DATA.projects.findIndex((project) => project.id === expandedProject.id)}
+            isExpanded
+            onDetailsToggle={() => setExpandedProjectId(null)}
+          />
+        </div>
+      ) : null}
       <div className="lab-grid" data-reveal>
-        {DATA.projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
+        {closedProjects.map((project) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={DATA.projects.findIndex((candidate) => candidate.id === project.id)}
+            isExpanded={false}
+            onDetailsToggle={() => setExpandedProjectId(project.id)}
+          />
         ))}
         <GitHubArchiveCard />
       </div>
@@ -811,11 +860,21 @@ function GitHubArchiveCard() {
   );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({
+  project,
+  index,
+  isExpanded,
+  onDetailsToggle,
+}: {
+  project: Project;
+  index: number;
+  isExpanded: boolean;
+  onDetailsToggle: () => void;
+}) {
   const evidence = projectEvidence[project.id] ?? [];
 
   return (
-    <article className={index === 0 ? 'project-card wide' : 'project-card'}>
+    <article className={isExpanded ? 'project-card project-card-expanded' : index === 0 ? 'project-card wide' : 'project-card'}>
       <header className="card-head">
         <span>
           {project.status} / {project.year}
@@ -825,22 +884,36 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <h3>{project.name}</h3>
       <p className="project-tagline">{project.tagline}</p>
       <p className="project-role">{project.role}</p>
-      <p>{cleanText(project.summary)}</p>
       <ProjectSignal projectId={project.id} />
       {evidence.length > 0 ? <ProjectEvidence items={evidence} /> : null}
-      <div className="project-problem">
-        <span>Problem</span>
-        <p>{cleanText(project.problem)}</p>
-      </div>
-      <TagList items={project.stack.slice(0, 8)} />
-      <ul className="project-highlights">
-        {project.highlights.slice(0, 3).map((highlight) => (
-          <li key={highlight.title}>
-            <strong>{cleanText(highlight.title)}</strong>
-            <span>{cleanText(highlight.body)}</span>
-          </li>
-        ))}
-      </ul>
+      <details className="project-details" open={isExpanded}>
+        <summary
+          onClick={(event) => {
+            event.preventDefault();
+            onDetailsToggle();
+          }}
+        >
+          <span>System details</span>
+          <span className="detail-state detail-open" aria-hidden="true">Open</span>
+          <span className="detail-state detail-close" aria-hidden="true">Close</span>
+        </summary>
+        <div className="project-detail-body">
+          <p className="project-summary-detail">{cleanText(project.summary)}</p>
+          <div className="project-problem">
+            <span>Problem</span>
+            <p>{cleanText(project.problem)}</p>
+          </div>
+          <TagList items={project.stack.slice(0, 8)} />
+          <ul className="project-highlights">
+            {project.highlights.slice(0, 3).map((highlight) => (
+              <li key={highlight.title}>
+                <strong>{cleanText(highlight.title)}</strong>
+                <span>{cleanText(highlight.body)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
       <div className="project-links">
         {project.links.map((link) => (
           <a key={link.href} href={link.href} target="_blank" rel="noreferrer noopener">
@@ -866,6 +939,25 @@ function ProjectEvidence({ items }: { items: readonly string[] }) {
 }
 
 function ProjectSignal({ projectId }: { projectId: string }) {
+  if (projectId === 'archetype') {
+    return (
+      <div className="project-signal archetype-signal" aria-hidden="true">
+        <div className="contract-flow">
+          {['brief', 'model', 'screens', 'tokens', 'contract', 'verify'].map((item, index) => (
+            <span key={item} style={{ '--step': index } as CSSProperties}>
+              {item}
+            </span>
+          ))}
+        </div>
+        <div className="contract-ledger">
+          {['evidence', 'dsag', 'gates'].map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (projectId === 'cruxharness') {
     return (
       <div className="project-signal crux-signal" aria-hidden="true">
@@ -886,6 +978,34 @@ function ProjectSignal({ projectId }: { projectId: string }) {
     );
   }
 
+  if (projectId === 'parallax') {
+    return (
+      <div className="project-signal parallax-signal" aria-hidden="true">
+        <div className="thesis-flow">
+          {['thesis', 'evidence', 'analytics', 'council', 'gate', 'audit'].map((item, index) => (
+            <span key={item}>
+              {item}
+              {index < 5 ? <i /> : null}
+            </span>
+          ))}
+        </div>
+        <div className="decision-gates">
+          {[
+            ['fresh', 'evidence'],
+            ['risk', 'bounded'],
+            ['thesis', 'reviewed'],
+            ['audit', 'ready'],
+          ].map(([label, state], index) => (
+            <span key={label} style={{ '--step': index } as CSSProperties}>
+              <b>{label}</b>
+              <em>{state}</em>
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (projectId === 'clipinsight') {
     return (
       <div className="project-signal clip-signal" aria-hidden="true">
@@ -901,11 +1021,27 @@ function ProjectSignal({ projectId }: { projectId: string }) {
   if (projectId === 'tradejournal') {
     return (
       <div className="project-signal trade-signal" aria-hidden="true">
-        {[42, 70, 48, 88, 36, 58, 76, 52].map((height, index) => (
-          <i key={index} style={{ '--h': `${height}%` } as CSSProperties} />
-        ))}
-        <span>detectors</span>
-        <span>coach</span>
+        <div className="trade-loop">
+          {['entry', 'detectors', 'coach', 'review'].map((item, index) => (
+            <span key={item}>
+              {item}
+              {index < 3 ? <i /> : null}
+            </span>
+          ))}
+        </div>
+        <div className="coach-checks">
+          {[
+            ['bias', 'tilt'],
+            ['risk', 'guard'],
+            ['digest', 'grounded'],
+            ['cache', 'cost aware'],
+          ].map(([label, state], index) => (
+            <span key={label} style={{ '--step': index } as CSSProperties}>
+              <b>{label}</b>
+              <em>{state}</em>
+            </span>
+          ))}
+        </div>
       </div>
     );
   }

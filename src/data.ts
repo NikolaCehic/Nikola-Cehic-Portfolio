@@ -217,6 +217,53 @@ export const DATA: CVData = {
   ],
   projects: [
     {
+      id: 'archetype',
+      name: 'Archetype',
+      tagline: 'Frontend implementation contracts for AI coding agents.',
+      status: 'Active',
+      year: '2026',
+      role: 'Solo build · TypeScript CLI + design architecture compiler',
+      summary:
+        'Design Architecture Compiler that turns product briefs, screenshots, brand notes, and repo context into implementation-ready frontend contracts for Codex, Claude Code, and other coding agents.',
+      problem:
+        'AI coding agents improvise routes, states, tokens, data contracts, and acceptance criteria when product intent is underspecified. Archetype compiles evidence into product models, screen inventories, component contracts, design tokens, verification plans, and readiness reports before code is written.',
+      stack: [
+        'TypeScript',
+        'Node.js',
+        'JSON Schema',
+        'CLI tooling',
+        'DSAG',
+        'Agent contracts',
+        'Validation harness',
+        'Golden fixtures',
+      ],
+      highlights: [
+        {
+          title: 'Contract package export',
+          body:
+            'Generates a complete package with product model, route map, screen inventory, screen states, design-system tokens, component contracts, data/action/form contracts, acceptance criteria, verification plan, and readiness report.',
+        },
+        {
+          title: 'DSAG traceability',
+          body:
+            'Builds a Design System Architecture Graph connecting evidence, goals, workflows, screens, patterns, components, tokens, accessibility constraints, and quality gates into one inspectable chain.',
+        },
+        {
+          title: 'Validation and simulation gates',
+          body:
+            'CLI commands generate, validate, summarize, simulate, write a deterministic target frontend, and verify the target so blockers and warnings surface before implementation work starts.',
+        },
+        {
+          title: 'Agent handoff artifacts',
+          body:
+            'Exports AGENTS.md, CLAUDE.md, implementation contracts, and verification plans that tell Codex and Claude Code exactly what to build, what to preserve, and when to stop for missing decisions.',
+        },
+      ],
+      links: [
+        { label: 'source', href: 'https://github.com/NikolaCehic/Archetype' },
+      ],
+    },
+    {
       id: 'cruxharness',
       name: 'Crux Harness',
       tagline: 'Decision-grade analysis agents with auditable reasoning artifacts.',
@@ -264,55 +311,50 @@ export const DATA: CVData = {
       ],
     },
     {
-      id: 'clipinsight',
-      name: 'ClipInsight AI',
-      tagline: 'Turn one video into a week of cross-platform content.',
-      status: 'Active',
-      year: '2025',
-      role: 'Solo build · design + full stack',
+      id: 'parallax',
+      name: 'Parallax',
+      tagline: 'Trading thesis analysis agent with deterministic evidence gates.',
+      status: 'Prototype',
+      year: '2026',
+      role: 'Solo build · TypeScript/Python agent prototype',
       summary:
-        'AI-powered content platform that ingests a video and outputs publish-ready Twitter threads, LinkedIn posts, newsletters, and SEO blog articles, collapsing a 3-4 hour repurposing workflow into a single upload.',
+        'Governed trading-thesis analysis agent that freezes evidence, runs deterministic Python analytics, routes the thesis through reviewer personas, and emits a dossier with action class, risks, vetoes, lifecycle triggers, and audit JSON.',
       problem:
-        'Creators burn hours repackaging the same idea for every channel. ClipInsight transcribes, analyzes, and rewrites in each platform\'s native voice with live previews, analytics, and one-click publishing on Pro.',
+        'Trading conviction can sound precise while hiding stale data, weak evidence, and unmanaged risk. Parallax separates numeric claims from generated judgment, uses gates for data quality, risk, restricted symbols, stale theses, and unsafe escalation, and keeps every thesis monitorable.',
       stack: [
-        'Next.js 15',
         'TypeScript',
-        'Tailwind',
-        'shadcn/ui',
-        'Supabase',
-        'NextAuth v5',
-        'Gemini 2.0 Flash',
-        'Stripe',
+        'Node.js',
+        'Python',
+        'CLI tooling',
+        'Schemas',
+        'Node test runner',
+        'Deterministic analytics',
+        'Governance gates',
       ],
       highlights: [
         {
-          title: 'Video → structured insights',
+          title: 'Decision dossier pipeline',
           body:
-            'Gemini 2.0 Flash pipeline handles transcription, key-moment detection, and topic extraction, normalized into a shared content model the generators read from.',
+            'Analyzes a thesis into a frozen evidence snapshot, deterministic analytics, council review, strongest bull and bear cases, required checks, vetoes, action class, lifecycle triggers, audit JSON, and markdown report.',
         },
         {
-          title: 'Platform-native generators',
+          title: 'Analytics boundary',
           body:
-            'Dedicated generators emit Twitter threads, LinkedIn posts, newsletters, and SEO blog articles. Each respects tone, length, and formatting conventions of its surface.',
+            'Python calculates returns, volatility, drawdown, liquidity, transaction-cost proxy, dependency correlation, portfolio exposure, event risk, and data quality while TypeScript owns orchestration and contracts.',
         },
         {
-          title: 'Live preview & editor',
+          title: 'Governance and lifecycle gates',
           body:
-            'Platform-accurate previews render before publishing so copy can be tuned in-surface. Inline edits persist and flow into the analytics layer.',
+            'Hard gates stop stale data, restricted symbols, concentration risk, unsafe escalation, expired approvals, and kill-switch violations. Lifecycle triggers can move active theses to stale or invalidated.',
         },
         {
-          title: 'Auth, billing, and tiers',
+          title: 'E2E proof suite',
           body:
-            'NextAuth v5 for session management, Stripe for subscriptions. Free (3 videos/mo), Pro ($29, 50 videos), Enterprise ($99, unlimited) with tier-gated features like direct cross-platform publishing.',
-        },
-        {
-          title: 'Demo-mode onboarding',
-          body:
-            'Any email unlocks a demo session; no OAuth setup needed to evaluate the full workflow. Removes the friction of "hello world" for a video-heavy product.',
+            'The test suite covers clean paper-candidate promotion, stale-data veto, restricted-symbol veto, volatility dissent, lifecycle invalidation, paper-trade attribution, sandbox approval, expiry, and risk-control enforcement.',
         },
       ],
       links: [
-        { label: 'source', href: 'https://github.com/NikolaCehic/clipinsightAI' },
+        { label: 'source', href: 'https://github.com/NikolaCehic/Parallax' },
       ],
     },
     {
@@ -372,6 +414,58 @@ export const DATA: CVData = {
       ],
       links: [
         { label: 'source', href: 'https://github.com/NikolaCehic/trading_journal' },
+      ],
+    },
+    {
+      id: 'clipinsight',
+      name: 'ClipInsight AI',
+      tagline: 'Turn one video into a week of cross-platform content.',
+      status: 'Active',
+      year: '2025',
+      role: 'Solo build · design + full stack',
+      summary:
+        'AI-powered content platform that ingests a video and outputs publish-ready Twitter threads, LinkedIn posts, newsletters, and SEO blog articles, collapsing a 3-4 hour repurposing workflow into a single upload.',
+      problem:
+        'Creators burn hours repackaging the same idea for every channel. ClipInsight transcribes, analyzes, and rewrites in each platform\'s native voice with live previews, analytics, and one-click publishing on Pro.',
+      stack: [
+        'Next.js 15',
+        'TypeScript',
+        'Tailwind',
+        'shadcn/ui',
+        'Supabase',
+        'NextAuth v5',
+        'Gemini 2.0 Flash',
+        'Stripe',
+      ],
+      highlights: [
+        {
+          title: 'Video → structured insights',
+          body:
+            'Gemini 2.0 Flash pipeline handles transcription, key-moment detection, and topic extraction, normalized into a shared content model the generators read from.',
+        },
+        {
+          title: 'Platform-native generators',
+          body:
+            'Dedicated generators emit Twitter threads, LinkedIn posts, newsletters, and SEO blog articles. Each respects tone, length, and formatting conventions of its surface.',
+        },
+        {
+          title: 'Live preview & editor',
+          body:
+            'Platform-accurate previews render before publishing so copy can be tuned in-surface. Inline edits persist and flow into the analytics layer.',
+        },
+        {
+          title: 'Auth, billing, and tiers',
+          body:
+            'NextAuth v5 for session management, Stripe for subscriptions. Free (3 videos/mo), Pro ($29, 50 videos), Enterprise ($99, unlimited) with tier-gated features like direct cross-platform publishing.',
+        },
+        {
+          title: 'Demo-mode onboarding',
+          body:
+            'Any email unlocks a demo session; no OAuth setup needed to evaluate the full workflow. Removes the friction of "hello world" for a video-heavy product.',
+        },
+      ],
+      links: [
+        { label: 'source', href: 'https://github.com/NikolaCehic/clipinsightAI' },
       ],
     },
   ],

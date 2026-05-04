@@ -19,6 +19,25 @@ describe('DATA', () => {
     }
   });
 
+  it('keeps the requested project ordering', () => {
+    expect(DATA.projects.map((project) => project.id)).toEqual([
+      'archetype',
+      'cruxharness',
+      'parallax',
+      'tradejournal',
+      'clipinsight',
+    ]);
+  });
+
+  it('keeps the requested Archetype and Parallax GitHub links exact', () => {
+    const links = Object.fromEntries(
+      DATA.projects.flatMap((project) => project.links.map((link) => [`${project.id}:${link.label}`, link.href])),
+    );
+
+    expect(links['archetype:source']).toBe('https://github.com/NikolaCehic/Archetype');
+    expect(links['parallax:source']).toBe('https://github.com/NikolaCehic/Parallax');
+  });
+
   it('has at least one highlight per role', () => {
     for (const job of DATA.experience) {
       expect(job.highlights.length).toBeGreaterThan(0);

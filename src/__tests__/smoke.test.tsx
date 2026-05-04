@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { App } from '../App';
 
 describe('App', () => {
@@ -9,6 +9,7 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: /how i work across systems/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /built across crypto/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /ai systems that are observable/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /side projects/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /building crypto, ai/i })).toBeInTheDocument();
   });
 
@@ -19,6 +20,98 @@ describe('App', () => {
       .getAllByRole('link', { name: /source/i })
       .find((link) => link.getAttribute('href') === 'https://github.com/NikolaCehic/crux-harness');
     expect(cruxLink).toBeDefined();
+  });
+
+  it('renders the requested lab project order before the GitHub archive card', () => {
+    render(<App />);
+    const lab = document.querySelector('#lab');
+    const headings = Array.from(lab?.querySelectorAll('.project-card h3') ?? []).map((heading) => heading.textContent);
+
+    expect(headings).toEqual([
+      'Archetype',
+      'Crux Harness',
+      'Parallax',
+      'Trade Journal',
+      'ClipInsight AI',
+      'View more on GitHub',
+    ]);
+  });
+
+  it('renders Archetype and Parallax source links in the lab', () => {
+    render(<App />);
+    const links = screen.getAllByRole('link', { name: /source/i });
+
+    expect(links.some((link) => link.getAttribute('href') === 'https://github.com/NikolaCehic/Archetype')).toBe(true);
+    expect(links.some((link) => link.getAttribute('href') === 'https://github.com/NikolaCehic/Parallax')).toBe(true);
+  });
+
+  it('keeps project details collapsed by default to reduce bento height', () => {
+    render(<App />);
+    const lab = document.querySelector('#lab');
+    const details = Array.from(lab?.querySelectorAll<HTMLDetailsElement>('.project-details') ?? []);
+
+    expect(details.length).toBe(5);
+    expect(details.every((detail) => !detail.open)).toBe(true);
+    expect(screen.getAllByText('System details').length).toBe(5);
+  });
+
+  it('lifts an opened project above the grid and restores it when closed', () => {
+    render(<App />);
+    const lab = document.querySelector('#lab');
+    const grid = lab?.querySelector('.lab-grid');
+    const firstSummary = grid?.querySelector('summary');
+
+    expect(firstSummary).toBeInstanceOf(HTMLElement);
+    fireEvent.click(firstSummary as HTMLElement);
+
+    expect(lab?.querySelector('.lab-expanded-slot .project-card h3')?.textContent).toBe('Archetype');
+    expect(Array.from(grid?.querySelectorAll('.project-card h3') ?? []).map((heading) => heading.textContent)).toEqual([
+      'Crux Harness',
+      'Parallax',
+      'Trade Journal',
+      'ClipInsight AI',
+      'View more on GitHub',
+    ]);
+
+    const expandedSummary = lab?.querySelector('.lab-expanded-slot summary');
+    expect(expandedSummary).toBeInstanceOf(HTMLElement);
+    fireEvent.click(expandedSummary as HTMLElement);
+
+    expect(lab?.querySelector('.lab-expanded-slot .project-card')).toBeNull();
+    expect(Array.from(grid?.querySelectorAll('.project-card h3') ?? []).map((heading) => heading.textContent)).toEqual([
+      'Archetype',
+      'Crux Harness',
+      'Parallax',
+      'Trade Journal',
+      'ClipInsight AI',
+      'View more on GitHub',
+    ]);
+  });
+
+  it('keeps the closed project grid in source order when switching open details', () => {
+    render(<App />);
+    const lab = document.querySelector('#lab');
+    const grid = lab?.querySelector('.lab-grid');
+    const firstSummary = grid?.querySelector('summary');
+
+    expect(firstSummary).toBeInstanceOf(HTMLElement);
+    fireEvent.click(firstSummary as HTMLElement);
+
+    const parallaxSummary = Array.from(grid?.querySelectorAll('.project-card') ?? [])
+      .find((card) => card.querySelector('h3')?.textContent === 'Parallax')
+      ?.querySelector('summary');
+
+    expect(parallaxSummary).toBeInstanceOf(HTMLElement);
+    fireEvent.click(parallaxSummary as HTMLElement);
+
+    expect(lab?.querySelector('.lab-expanded-slot .project-card h3')?.textContent).toBe('Parallax');
+    expect(Array.from(grid?.querySelectorAll('.project-card h3') ?? []).map((heading) => heading.textContent)).toEqual([
+      'Archetype',
+      'Crux Harness',
+      'Trade Journal',
+      'ClipInsight AI',
+      'View more on GitHub',
+    ]);
   });
 
   it('renders the phase 1 flagship systems without removed selected-work cards', () => {
@@ -87,15 +180,21 @@ describe('App', () => {
     expect(aiSection).toHaveTextContent('RAG patterns');
     expect(aiSection).toHaveTextContent(/traceable runs/i);
     expect(aiSection).toHaveTextContent('Crux');
-    expect(aiSection).toHaveTextContent('Journal');
-    expect(aiSection).toHaveTextContent('ClipInsight');
+    expect(aiSection).toHaveTextContent('Archetype');
+    expect(aiSection).toHaveTextContent('Parallax');
+    expect(aiSection).not.toHaveTextContent('Journal');
+    expect(aiSection).not.toHaveTextContent('ClipInsight');
   });
 
   it('surfaces AI proof points inside project cards', () => {
     render(<App />);
-    expect(screen.getAllByText('AI proof').length).toBe(3);
+    expect(screen.getAllByText('AI proof').length).toBe(5);
+    expect(screen.getByText('Contract package')).toBeInTheDocument();
+    expect(screen.getByText('DSAG graph')).toBeInTheDocument();
     expect(screen.getByText('Agent loop')).toBeInTheDocument();
     expect(screen.getByText('Eval reports')).toBeInTheDocument();
+    expect(screen.getByText('Evidence snapshot')).toBeInTheDocument();
+    expect(screen.getByText('Decision gates')).toBeInTheDocument();
     expect(screen.getByText('Gemini pipeline')).toBeInTheDocument();
     expect(screen.getByText('Claude coach')).toBeInTheDocument();
   });
